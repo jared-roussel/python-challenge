@@ -79,3 +79,4 @@ with open(file_name,"r") as csv_file:
     file_path = os.path.join(save_path, new_file_name)
     print(file_path)
     new_file = open(file_path,"x")
+    #new_file.write()
