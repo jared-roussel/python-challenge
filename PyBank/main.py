@@ -36,6 +36,17 @@ with open(file_name,"r") as csv_file:
 
     #Add profit and losses together for each month
     profits = 0 
-    for profits in profit_losses:
-        profits += (rows)
-    print(f"{profits}")
+    for row sin profit_losses:
+        profits += int(rows)
+   # print(f"{profits}")
+
+    #Print the analysis to the file
+    print("----------------------------------------------------------------------------")
+    print("Analysis Section")
+    print(" ")
+    print(" ")
+    print(f"Total Months: {total_months}")
+    print(f"Total Profit: ${profits}")
+    print("----------------------------------------------------------------------------")
+
+
