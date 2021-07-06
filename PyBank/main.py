@@ -41,8 +41,8 @@ with open(file_name,"r") as csv_file:
 
     #Calculate monthly change for each row in the profits / losses column
     m2m_change = 0
-    for rows in profit_losses:
-        m2m_change = m2m_change.append((profit_losses[(rows)+1] - (profit_losses[(rows)])))
+    for i in range(len(profit_losses)):
+        m2m_change = m2m_change.append((profit_losses[(i+1] - (profit_losses[i]))))
         print(m2m_change)
 
     #Print the analysis to the file
