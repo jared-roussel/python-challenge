@@ -44,17 +44,17 @@ with open(file_name,"r") as csv_file:
 
     #Set for loop for capturing the change in profit and loss
     #print(len(profit_losses))
-    for i in range(len(profit_losses)):
-        m2m_change =int(profit_losses[i]) # +- profit_losses[i+1]
+    i = 1
+    for i in range(len(profit_losses)-1):
+        m2m_change = (int(profit_losses[i+1]) - int(profit_losses[i]))
         print(m2m_change)
-        #if i < 3:
-            #print(int(profit_losses[i]))
-            #m2m_change = profit_losses[i+1]
-        #print(int(profit_losses[1]))
-        #m2m_change = (int(profit_losses[i+1]) - int(profit_losses[i]))
-        #print(m2m_change)
     
-
+        #Define function to create average change of profit and losses
+    #def average(m2m_change):
+        #sum(m2m_change) / len(m2m_change)
+    #print(sum(m2m_change))
+        
+       
     #Print the analysis to the file
     print("----------------------------------------------------------------------------")
     print("Analysis Section")
@@ -62,6 +62,7 @@ with open(file_name,"r") as csv_file:
     print(" ")
     print(f"Total Months: {total_months}")
     print(f"Total Profit / Losses: $ {profits}")
+    print("Average Monthly Change: ")
     print("----------------------------------------------------------------------------")
     
 
