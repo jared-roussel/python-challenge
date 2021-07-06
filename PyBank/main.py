@@ -1,6 +1,7 @@
 #Import dependencies and libraries
 import os
 import csv
+from typing import Counter
 
 #Identify location of csv file
 file_name = os.path.join('PyBank','Resources','budget_data.csv')
@@ -44,15 +45,20 @@ with open(file_name,"r") as csv_file:
 
     #Set for loop for capturing the change in profit and loss
     #print(len(profit_losses))
-    i = 1
-    for i in range(len(profit_losses)-1):
-        m2m_change = (int(profit_losses[i+1]) - int(profit_losses[i]))
-        print(m2m_change)
+    rows = 1
+    for rows in range(len(profit_losses)-1):
+        m2m_change = (int(profit_losses[rows+1]) - int(profit_losses[rows]))
+        change_sum = sum(range(m2m_change))
+        change_length = rows+1
+        change_avg = change_sum / change_length
+        #print(m2m_change)
     
-        #Define function to create average change of profit and losses
-    #def average(m2m_change):
-        #sum(m2m_change) / len(m2m_change)
-    #print(sum(m2m_change))
+    
+   
+    
+    #Calculate average change
+    #change_sum / change_length
+    
         
        
     #Print the analysis to the file
