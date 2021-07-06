@@ -9,6 +9,7 @@ file_name = os.path.join('PyBank','Resources','budget_data.csv')
 header_names = []
 monthly_dates = []
 profit_losses = []
+m2m_change = []
 
 
 #Open and read csv file
@@ -37,6 +38,12 @@ with open(file_name,"r") as csv_file:
     for rows in profit_losses:
         profits += int(rows)
     #print(f"{profits}")
+
+    #Calculate monthly change for each row in the profits / losses column
+    m2m_change = 0
+    for rows in profit_losses
+        m2m_change = profit_losses.append(profits(row[rows]))
+        print(m2m_change)
 
     #Print the analysis to the file
     print("----------------------------------------------------------------------------")
