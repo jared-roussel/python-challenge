@@ -37,13 +37,20 @@ with open(file_name,"r") as csv_file:
     profits = 0 
     for rows in profit_losses:
         profits += int(rows)
-    print(f"{profits}")
+    #print(f"{profits}")
 
     #Calculate monthly change for each row in the profits / losses column
     m2m_change = 0
+
+    #Set for loop for capturing the change in profit and loss
+    #print(len(profit_losses))
     for i in range(len(profit_losses)):
-        m2m_change = m2m_change.append((profit_losses[(i+1] - (profit_losses[i]))))
+        if i < 3:
+            print(int(profit_losses[0]))
+        #print(int(profit_losses[1]))
+        #m2m_change = (int(profit_losses[i+1]) - int(profit_losses[i]))
         print(m2m_change)
+    
 
     #Print the analysis to the file
     print("----------------------------------------------------------------------------")
@@ -53,5 +60,5 @@ with open(file_name,"r") as csv_file:
     print(f"Total Months: {total_months}")
     print(f"Total Profit / Losses: $ {profits}")
     print("----------------------------------------------------------------------------")
-
+    
 
