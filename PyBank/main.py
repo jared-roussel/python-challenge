@@ -16,14 +16,26 @@ with open(file_name,"r") as csv_file:
     csv_reader = csv.reader(csv_file,delimiter=",")
     csv_header = next(csv_reader)
     header_names = csv_header
-    print(header_names)
+    #print(header_names)
     
     #for rows in csv_reader:
         #print(rows)
 
+    #Read and append to lists in rows
     for rows in csv_reader:
         monthly_dates.append(rows[0])
         profit_losses.append(rows[1])
         # print(monthly_dates)
         #print(profit_losses)
 
+    #Count the months in the file to get the total # of months
+    total_months = 0
+    for months in monthly_dates:
+        total_months += 1
+    #print(total_months) Answer is 86
+
+    #Add profit and losses together for each month
+    profits = 0 
+    for profits in profit_losses:
+        profits += (rows)
+    print(f"{profits}")
