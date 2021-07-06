@@ -40,16 +40,19 @@ with open(file_name,"r") as csv_file:
     #print(f"{profits}")
 
     #Calculate monthly change for each row in the profits / losses column
-    m2m_change = 0
+    
 
     #Set for loop for capturing the change in profit and loss
     #print(len(profit_losses))
     for i in range(len(profit_losses)):
-        if i < 3:
-            print(int(profit_losses[0]))
+        m2m_change =int(profit_losses[i]) # +- profit_losses[i+1]
+        print(m2m_change)
+        #if i < 3:
+            #print(int(profit_losses[i]))
+            #m2m_change = profit_losses[i+1]
         #print(int(profit_losses[1]))
         #m2m_change = (int(profit_losses[i+1]) - int(profit_losses[i]))
-        print(m2m_change)
+        #print(m2m_change)
     
 
     #Print the analysis to the file
