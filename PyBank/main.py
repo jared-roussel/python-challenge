@@ -3,13 +3,13 @@ import os
 import csv
 
 #Identify location of csv file
-csv_file_path = os.path.join("..","Resources","budget_data.csv") 
+file_name = os.path.join('PyBank','Resources','election_data.csv')
+fields = []
+rows = []
 
 #Open and read csvfile
-with open(csv_file_path) as csv_file:
-    csv_reader = csv.reader(csv_file, delimiter=",")
-
-#For row in csv_reader:
-#print(csv_reader(row))
+with open(file_name,"r") as csv_file:
+    csv_reader = csv.reader(csv_file,delimiter=",")
+    print(csv_reader)
 
 
