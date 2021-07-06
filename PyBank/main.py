@@ -17,15 +17,13 @@ with open(file_name,"r") as csv_file:
     csv_header = next(csv_reader)
     header_names = csv_header
     #print(header_names)
-    
-    #for rows in csv_reader:
-        #print(rows)
+
 
     #Read and append to lists in rows
     for rows in csv_reader:
         monthly_dates.append(rows[0])
         profit_losses.append(rows[1])
-        # print(monthly_dates)
+        #print(monthly_dates)
         #print(profit_losses)
 
     #Count the months in the file to get the total # of months
@@ -36,9 +34,9 @@ with open(file_name,"r") as csv_file:
 
     #Add profit and losses together for each month
     profits = 0 
-    for row sin profit_losses:
+    for rows in profit_losses:
         profits += int(rows)
-   # print(f"{profits}")
+    #print(f"{profits}")
 
     #Print the analysis to the file
     print("----------------------------------------------------------------------------")
@@ -46,7 +44,7 @@ with open(file_name,"r") as csv_file:
     print(" ")
     print(" ")
     print(f"Total Months: {total_months}")
-    print(f"Total Profit: ${profits}")
+    print(f"Total Profit / Losses: $ {profits}")
     print("----------------------------------------------------------------------------")
 
 
