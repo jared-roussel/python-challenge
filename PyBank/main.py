@@ -45,22 +45,21 @@ with open(file_name,"r") as csv_file:
 
     #Set for loop for capturing the change in profit and loss
     #print(len(profit_losses))
-    rows = 1
-    for rows in range(len(profit_losses)-1):
-        m2m_change = (int(profit_losses[rows+1]) - int(profit_losses[rows]))
+    i = 1
+    change_avg = 0
+    for i in range(len(profit_losses)-1):
+        #new_change_avg = change_avg
+        m2m_change = (int(profit_losses[i+1]) - int(profit_losses[i]))
         change_sum = sum(range(m2m_change))
-        change_length = rows+1
-        change_avg = change_sum / change_length
-        #print(m2m_change)
+        change_length = i+1
+        change_avg_calc = change_sum / change_length
+        change_avg = change_avg + change_avg_calc
+    #print(m2m_change)
+    #print(change_sum)
+
+   # greatest_profit_increase = max(float(m2m_change))
     
-    
-   
-    
-    #Calculate average change
-    #change_sum / change_length
-    
-        
-       
+
     #Print the analysis to the file
     print("----------------------------------------------------------------------------")
     print("Analysis Section")
@@ -68,7 +67,15 @@ with open(file_name,"r") as csv_file:
     print(" ")
     print(f"Total Months: {total_months}")
     print(f"Total Profit / Losses: $ {profits}")
-    print("Average Monthly Change: ")
+    print(f"Average Monthly Change: {change_avg}")
+    print(f"Greatest Increase in Profits: ")
+    print(f"Greatest Decrease in Profits: ")
     print("----------------------------------------------------------------------------")
-    
 
+    #Create new file
+    #r allows for a raw string value to add to the file_path
+    save_path = (r'C:\Users\12254\personal-class\python-challenge\python-challenge\PyBank\Analysis')
+    new_file_name = 'analysis.txt'
+    file_path = os.path.join(save_path, new_file_name)
+    print(file_path)
+    new_file = open(file_path,"x")
