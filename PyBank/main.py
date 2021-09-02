@@ -9,7 +9,7 @@ file_name = os.path.join('PyBank','Resources','budget_data.csv')
 header_names = []
 monthly_dates = []
 profit_losses = []
-m2m_change = []
+m2m_change_list= []
 
 
 #Open and read csv file
@@ -41,30 +41,49 @@ with open(file_name,"r") as csv_file:
     change_avg = 0
     for i in range(len(profit_losses)-1):
         m2m_change = (int(profit_losses[i+1]) - int(profit_losses[i]))
-        change_sum = sum(range(m2m_change))
-        change_length = i+1
-        change_avg_calc = change_sum / change_length
-        change_avg = change_avg + change_avg_calc
-    
+        m2m_change_list.append(m2m_change)
 
-    #Print the analysis to the file
-    print("----------------------------------------------------------------------------")
-    print("Analysis Section")
-    print(" ")
-    print(" ")
-    print(f"Total Months: {total_months}")
-    print(f"Total Profit / Losses: $ {profits}")
-    print(f"Average Monthly Change: {change_avg}")
-    print(f"Greatest Increase in Profits: ")
-    print(f"Greatest Decrease in Profits: ")
-    print("----------------------------------------------------------------------------")
 
-    #Create new file and dictionary for input
-    #r allows for a raw string value to add to the file_path
-    save_path = (r'C:\Users\12254\personal-class\python-challenge\python-challenge\PyBank\Analysis')
-    new_file_name = 'analysis.txt'
-    file_path = os.path.join(save_path, new_file_name)
-    print(file_path)
-    new_file = open(file_path,"x")
+#print(len(m2m_change_list))
+#print(len(monthly_dates))
 
-    #new_file.write()
+max_m2m = max(m2m_change_list)
+min_m2m = min(m2m_change_list)
+avg_m2m = sum(m2m_change_list) / len(m2m_change_list)
+rounded_avg = round(avg_m2m,2)
+#print(avg_m2m)
+
+max_m2m_index = m2m_change_list.index(max_m2m)
+min_m2m_index = m2m_change_list.index(min_m2m)
+
+#print(max_m2m_index)
+#print(min_m2m_index)
+
+#Print the analysis to the file
+print("----------------------------------------------------------------------------")
+print("Analysis Section")
+print(" ")
+print(f"Total Months: {total_months}")
+print(f"Total Profit / Losses: $ {profits}")
+print(f"Average Monthly Change: $ {rounded_avg}")
+print(f"Greatest Increase in Profits: {monthly_dates[max_m2m_index+1]} ($ {max_m2m})")
+print(f"Greatest Decrease in Profits: {monthly_dates[min_m2m_index+1]} ($ {min_m2m})")
+print("----------------------------------------------------------------------------")
+
+lines = ["Analysis Section",
+" ",
+f"Total Months: {total_months}",
+f"Total Profit / Losses: $ {profits}",
+f"Average Monthly Change: $ {rounded_avg}",
+f"Greatest Increase in Profits: {monthly_dates[max_m2m_index+1]} ($ {max_m2m})",
+f"Greatest Decrease in Profits: {monthly_dates[min_m2m_index+1]} ($ {min_m2m})"]
+#print(lines)
+
+#r allows for a raw string value to add to the file_path
+save_path = (r'C:\Users\12254\personal-class\python-challenge\python-challenge\PyBank\Analysis')
+new_file_name = 'analysis.txt'
+file_path = os.path.join(save_path, new_file_name)
+print(file_path)
+new_file = open(file_path,"a")
+#with open("analysis.txt","a") as new_file:
+new_file.writelines('\n'.join(lines))
