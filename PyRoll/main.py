@@ -28,25 +28,23 @@ with open(file_name,"r") as csv_file:
         candidates.append(rows[2])
 print(total_votes)
 
+#Sort candidates to group the same candidate together for counting
 candidates_sorted = sorted(candidates)
-#print(candidates_sorted)
-#candidates_list = candidates
 candidate_votes = Counter(candidates_sorted)
 top_candidates = candidate_votes.items()
 
+#Append candidates to the vote list
 for candidate in top_candidates:
     candidate_vote_list.append(candidate)
     
-print(candidate_vote_list)
 
-
+#Calculate votes per candidate
 khan_votes_perc = format((candidate_vote_list[2][1])*100/total_votes,'.3f')
 correy_votes_perc = format((candidate_vote_list[1][1])*100/total_votes,'.3f')
 li_votes_perc = format((candidate_vote_list[3][1])*100/total_votes,'.3f')
 otooley_votes_perc = format((candidate_vote_list[4][1])*100/total_votes,'.3f')
 
-#print(khan_votes_perc)
-
+#Print the analysis to the terminal
 print("----------------------------------------------------------------------------")
 print("Election Results")
 print(" ")
@@ -59,6 +57,7 @@ print(f"{candidate_vote_list[4][0]}: {otooley_votes_perc} ({candidate_vote_list[
 print("----------------------------------------------------------------------------")
 print(f"Winner: {candidate_vote_list[2][0]}")
 
+#Create lines for creation of txt file
 lines = ["Election Results",
 " ",
 f"Total Votes: {total_votes} cast in election",
