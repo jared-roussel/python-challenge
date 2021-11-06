@@ -12,7 +12,7 @@ file_name = os.path.join('PyRoll','Resources','election_data.csv')
 #rows = []
 voter_ID = []
 candidates = []
-candidate_votes = []
+candidate_vote_list = []
 total_votes = 0
 
 
@@ -26,22 +26,55 @@ with open(file_name,"r") as csv_file:
         total_votes += 1
         voter_ID.append(rows[0])
         candidates.append(rows[2])
+print(total_votes)
 
 candidates_sorted = sorted(candidates)
 #print(candidates_sorted)
 #candidates_list = candidates
 candidate_votes = Counter(candidates_sorted)
+top_candidates = candidate_votes.items()
 
-print(candidate_votes)
-print(candidate_votes)
-
-#def candidate_count(candidates_sorted):
-    #candidate_vote_count = 0 
-    #for candidate in candidates:
-        #if (candidate == candidate_list):
-            #candidate_vote_count += 1
-    #return candidate_vote_count
-#print(candidate_vote_count)
+for candidate in top_candidates:
+    candidate_vote_list.append(candidate)
+    
+print(candidate_vote_list)
 
 
+khan_votes_perc = format((candidate_vote_list[2][1])*100/total_votes,'.3f')
+correy_votes_perc = format((candidate_vote_list[1][1])*100/total_votes,'.3f')
+li_votes_perc = format((candidate_vote_list[3][1])*100/total_votes,'.3f')
+otooley_votes_perc = format((candidate_vote_list[4][1])*100/total_votes,'.3f')
 
+#print(khan_votes_perc)
+
+print("----------------------------------------------------------------------------")
+print("Election Results")
+print(" ")
+print(f"Total Votes: {total_votes} cast in election")
+print("----------------------------------------------------------------------------")
+print(f"{candidate_vote_list[2][0]}: {khan_votes_perc} ({candidate_vote_list[2][1]}) ")
+print(f"{candidate_vote_list[1][0]}: {correy_votes_perc} ({candidate_vote_list[1][1]}) ")
+print(f"{candidate_vote_list[3][0]}: {li_votes_perc} ({candidate_vote_list[3][1]}) ")
+print(f"{candidate_vote_list[4][0]}: {otooley_votes_perc} ({candidate_vote_list[4][1]}) ")
+print("----------------------------------------------------------------------------")
+print(f"Winner: {candidate_vote_list[2][0]}")
+
+lines = ["Election Results",
+" ",
+f"Total Votes: {total_votes} cast in election",
+f"{candidate_vote_list[2][0]}: {khan_votes_perc} ({candidate_vote_list[2][1]})",
+f"{candidate_vote_list[1][0]}: {correy_votes_perc} ({candidate_vote_list[1][1]})",
+f"{candidate_vote_list[3][0]}: {li_votes_perc} ({candidate_vote_list[3][1]})",
+f"{candidate_vote_list[4][0]}: {otooley_votes_perc} ({candidate_vote_list[4][1]})",
+f"Winner: {candidate_vote_list[2][0]}"]
+
+
+#r allows for a raw string value to add to the file_path
+save_path = (r'C:\Users\12254\personal-class\python-challenge\python-challenge\PyRoll\Analysis')
+new_file_name = 'election_results.txt'
+file_path = os.path.join(save_path, new_file_name)
+print(file_path)
+new_file = open(file_path,"a")
+
+#write to new file
+new_file.writelines('\n'.join(lines))
